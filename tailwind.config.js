@@ -13,6 +13,9 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'gradient-bg': 'linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)'
       },
+      backgroundColor: {
+        'default': 'var(--bg-color)'
+      },
     },
   },
   plugins: [],

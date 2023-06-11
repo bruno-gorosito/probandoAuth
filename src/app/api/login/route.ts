@@ -28,7 +28,6 @@ export async function POST(req: NextRequest) {
             accessToken
         }
         // cookies().set('token', accessToken)
-        console.log(result)
         return NextResponse.json(result)
     } else return NextResponse.json(null)
 }

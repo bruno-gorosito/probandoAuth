@@ -1,15 +1,63 @@
 'use client'
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 
+export default function Page() {
 
-const Page = () => {
-    const [error, setError] = useState({
+    const router = useRouter();
+    const [mensajeError, setError] = useState({
         error: false,
         msg: ''
     })
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
+    })
 
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setUser({
+            ...user,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const redireccionar = () => {
+        router.push('/chat')
+    }
+
+    const {data: session} = useSession()
+
+    const handleSubmit = async(e:FormEvent) => {
+        e.preventDefault();
+        
+            const result = await signIn('credentials', {
+                email: user.email, 
+                password: user.password,
+                redirect: false
+            })
+            if (result?.error) {
+                setError({
+                    error: true,
+                    msg: "Email o contraseña incorrectos."
+                })
+                setTimeout(() => {
+                    setError({
+                        error: false,
+                        msg: ""
+                    })
+                }, 2000)
+                return 
+            } 
+            redireccionar()
+    }   
+
+    useEffect(() => {
+        session ? redireccionar() : null
+    }, [])
     
     return(
         <>
@@ -20,11 +68,16 @@ const Page = () => {
                 alt="img-logo"
                 className="w-full md:w-3/4 lg:w-1/2 mx-auto"
             />
-            <form className="w-full flex flex-col justify-center items-center px-4 sm:px-10  lg:w-1/2 pb-10 lg:py:0">
-                
-                <h1 className="text-3xl text-center">Iniciar sesión</h1>
+            <form 
+                onSubmit={e => handleSubmit(e)}
+                className="w-full flex flex-col justify-center items-center px-4 sm:px-10  lg:w-1/2 pb-10 lg:py:0"
+            >    
+                {mensajeError.error 
+                    ? <p className=" w-full py-3 bg-red-500 mt-2 border-red-700 text-white text-center mb-3">{mensajeError.msg}</p> 
+                    : null}
+                <h1 className="text-3xl text-center">¡Te extrañabamos!</h1>
                 <div
-                    className="my-4 w-full"
+                    className="my-2 w-full"
                 >
                     <label
                         className="w-full block my-2"
@@ -32,11 +85,14 @@ const Page = () => {
                     <input 
                         className="w-full px-4 py-2 rounded text-black"
                         type="email"
+                        name="email"
+                        onChange={e => handleChange(e)}
+                        required
                         placeholder="Ingrese el e-mail"
                     />
                 </div>
                 <div
-                    className="my-4 w-full"
+                    className="my-2 w-full"
                 >
                     <label
                         className="w-full block my-2"
@@ -44,12 +100,21 @@ const Page = () => {
                     <input 
                         className="w-full px-4 py-2 rounded text-black"
                         type="password"
+                        name="password"
+                        onChange={e => handleChange(e)}
+                        required
                         placeholder="Ingrese el contraseña"
                     />
                 </div>
+                <button
+                    type="submit"
+                    className="mt-6 bg-gradient-bg w-full py-3 rounded-md hover:bg-gradient-bg hover:opacity-50 text-white"
+                >Iniciar Sesión</button>
+                <Link
+                    className="mt-4"
+                    href="auth/register"
+                >No tengo una cuenta</Link>
             </form>
         </>
     )
 }
-
-export default Page;

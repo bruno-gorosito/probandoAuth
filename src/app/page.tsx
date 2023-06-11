@@ -1,4 +1,5 @@
 'use client'
+import { Header } from '@/components/headerPaginaPrincipal'
 import { SignInButton } from '@/components/signInButton'
 import { SessionProvider, useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -9,17 +10,15 @@ export default function Home() {
   
 
 
-  const {data: session} = useSession()
-
-  console.log(session?.user.accessToken)
-
 
 
   return (
+    <>
+    <Header />
     <main>
       <SignInButton />
-      {session ? <p>Ola {session?.user?.name}</p> : null}
-      <Link href="/about-us">Irme a otro</Link>
+      <Link href="/auth/register">Registrarme</Link>
     </main>
+    </>
   )
 }

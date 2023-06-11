@@ -36,7 +36,6 @@ const handler = NextAuth({
   
         // If no error and we have user data, return it
         if (user) {
-          console.log(user)
           return user
         }
         // Return null if user data could not be retrieved
@@ -44,6 +43,11 @@ const handler = NextAuth({
       }
     })
   ],
+  
+  pages: {
+    signIn: '/auth/login',
+    error: 'auth/login?error=true'
+  },
   callbacks: {
     async jwt({token, user}) {
       return ({...token, ...user})

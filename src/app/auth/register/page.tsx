@@ -1,8 +1,10 @@
 'use client'
 import axios from "axios";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 
@@ -14,6 +16,7 @@ const Page = () => {
 
 
 
+    const {data: session} = useSession()
     const [errorPass, setErrorPass] = useState(false) 
 
     const [newUser, setNewUser] = useState({
@@ -85,7 +88,6 @@ const Page = () => {
             redirect: true,
             callbackUrl: '/'
         })
-        console.log(result)
 
 
     }
@@ -115,6 +117,13 @@ const Page = () => {
             setErrorPass(false)
         }
     }, [pass2, password])
+
+    
+    useEffect(() => {
+        setTimeout(() => {
+            session ? useRouter().push('/chat') : null
+        }, 500)
+    }, [])
 
     return (
         <>
@@ -211,8 +220,13 @@ const Page = () => {
                     }
                 </div>
                 <button
-                    className="my-6 bg-gradient-bg w-full py-3 rounded-md hover:bg-gradient-bg hover:opacity-50 text-white"
+                    type="submit"
+                    className="mt-6 bg-gradient-bg w-full py-3 rounded-md hover:bg-gradient-bg hover:opacity-50 text-white"
                 >Registrarme</button>
+                <Link
+                    className="mt-4"
+                    href="auth/login"
+                >Ya tengo una cuenta</Link>
             </form>
         </>
     )
