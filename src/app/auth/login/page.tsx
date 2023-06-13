@@ -25,10 +25,6 @@ export default function Page() {
         })
     }
 
-    const redireccionar = () => {
-        router.push('/chat')
-    }
-
     const {data: session} = useSession()
 
     const handleSubmit = async(e:FormEvent) => {
@@ -53,7 +49,7 @@ export default function Page() {
                 return 
             } 
             console.log('me voy de aki')
-            redireccionar()
+            router.push('/chat');
     }   
 
     
