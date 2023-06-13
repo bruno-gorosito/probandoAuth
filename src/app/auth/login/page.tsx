@@ -39,8 +39,7 @@ export default function Page() {
                 password: user.password,
                 redirect: false
             })
-            console.log(result)
-            if (result?.error) {
+            if (result?.error !== null) {
                 setError({
                     error: true,
                     msg: "Email o contraseña incorrectos."
@@ -53,6 +52,7 @@ export default function Page() {
                 }, 2000)
                 return 
             } 
+            console.log('me voy de aki')
             redireccionar()
     }   
 
