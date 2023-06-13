@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 
 const ColumnaChats = () => {
     const {data: session} = useSession();
+    const router = useRouter();
     const cerrarSesion = () => {
         signOut()
-        useRouter().push('/login')
+        router.push('/login')
     }
     
     return(
