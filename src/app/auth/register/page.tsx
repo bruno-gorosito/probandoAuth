@@ -119,11 +119,6 @@ const Page = () => {
     }, [pass2, password])
 
     
-    useEffect(() => {
-        setTimeout(() => {
-            session ? useRouter().push('/chat') : null
-        }, 500)
-    }, [])
 
     return (
         <>

@@ -39,6 +39,7 @@ export default function Page() {
                 password: user.password,
                 redirect: false
             })
+            console.log(result)
             if (result?.error) {
                 setError({
                     error: true,
@@ -55,9 +56,6 @@ export default function Page() {
             redireccionar()
     }   
 
-    useEffect(() => {
-        session ? redireccionar() : null
-    }, [])
     
     return(
         <>

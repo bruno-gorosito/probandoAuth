@@ -29,6 +29,7 @@ model User {
   lastName  String
   name      String
   password  String
+  admin     Boolean     @default(false)
   createdAt DateTime    @default(now())
   chats     UserChat[] 
 

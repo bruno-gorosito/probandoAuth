@@ -7,6 +7,7 @@ interface RequestBody {
     lastName: string;
     email: string;
     password: string;
+    admin?: boolean;
 }
 
 
@@ -19,16 +20,31 @@ export async function POST(req: NextRequest){
     })
     if (res) return NextResponse.json(null)
 
-    const user = await prisma.user.create({
-        data: {
-            name: body.name,
-            email: body.email,
-            lastName: body.lastName,
-            password: await bcrypt.hash(body.password, 10)
-        }
-    })
-
+    let user;
+    if (!body.admin) {
+        user = await prisma.user.create({
+            data: {
+                name: body.name,
+                email: body.email,
+                lastName: body.lastName,
+                password: await bcrypt.hash(body.password, 10)
+            }
+        })    
+    } else {
+        user = await prisma.user.create({
+            data: {
+                name: body.name,
+                email: body.email,
+                lastName: body.lastName,
+                admin: body.admin,
+                password: await bcrypt.hash(body.password, 10)
+            }
+        })    
+    }
     const {password, ...result} = user;
     return NextResponse.json(result);
 }
 
+export function GET(){
+    return NextResponse.json({msgh: 'olis'})
+}
