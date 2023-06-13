@@ -105,7 +105,7 @@ export default function Page() {
                     className="mt-6 bg-gradient-bg w-full py-3 rounded-md hover:bg-gradient-bg hover:opacity-50 text-white"
                 >Iniciar Sesión</button>
                 <Link
-                    className="mt-4"
+                    className="mt-4 pb-1 whitespace-nowrap relative after:content-[''] after:w-full after:h-1 after:absolute after:bg-gradient-bg after:bottom-0 after:left-0 after:transition after:origin-left hover:after:scale-x-100 after:scale-x-0 transition-all"
                     href="auth/register"
                 >No tengo una cuenta</Link>
             </form>
