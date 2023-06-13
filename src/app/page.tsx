@@ -15,13 +15,10 @@ export default function Home() {
   return (
     <>
     <Header />
-    <main>
-      <button
-        onClick={() => signIn()}
-      >sassssss</button>
-      <h1>AAAAAAAAAA</h1>
-      <SignInButton />
-      <Link href="/auth/register">Registrarme</Link>
+    <main className='w-full mx-auto max-w-7xl bg-default min-h-screen'>
+      <div>
+        <h1>Aqui va el content</h1>
+      </div>
     </main>
     </>
   )

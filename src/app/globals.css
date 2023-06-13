@@ -5,12 +5,12 @@
 :root {
   --bg-gradient:  linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
   --text-color: #000;
-  --bg-color: #fff;
+  --bg-color: #ececec;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #ffffff;
+    --text-color: #e2e2e2;
     --bg-color: #2d2d2d;
   }
 }

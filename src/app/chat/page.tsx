@@ -16,10 +16,10 @@ export default function Page () {
             {/* MODAL */}
             <div className={`w-full h-screen ${modalChat ? 'block' : 'hidden'} absolute flex justify-center items-center mx-auto z-50`}> 
                 <div 
-                    className="w-full absolute h-full bg-slate-50/40 z-40" 
+                    className="w-full absolute h-full bg-slate-50/30 z-40" 
                     onClick={() => setModal(false)}    
                 ></div>
-                <div className="w-full max-w-md max-h-96  p-8 z-50 bg-default rounded-xl">
+                <div className="w-full max-w-md max-h-96  p-8 z-50 dark:bg-default bg-gray-300/90 rounded-xl">
                     <svg  className="w-6 h-6 float-right hover:cursor-pointer" onClick={() => setModal(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
