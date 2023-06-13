@@ -19,7 +19,7 @@ export default function Page () {
                     className="w-full absolute h-full bg-slate-50/40 z-40" 
                     onClick={() => setModal(false)}    
                 ></div>
-                <div className="w-full max-w-md max-h-96  border p-8 z-50 bg-default rounded-xl">
+                <div className="w-full max-w-md max-h-96  p-8 z-50 bg-default rounded-xl">
                     <svg  className="w-6 h-6 float-right hover:cursor-pointer" onClick={() => setModal(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -54,7 +54,7 @@ export default function Page () {
                     >
                         <div
                             onClick={() => setModal(!modalChat)}
-                            className="bg-gradient-bg w-16 aspect-square rounded-full text-white flex justify-center text-4xl font-medium place-items-center"
+                            className="bg-gradient-bg w-16 aspect-square rounded-full text-white flex justify-center text-4xl font-medium place-items-center hover:cursor-pointer"
                         >+</div>
                     </div>
                 </div>
