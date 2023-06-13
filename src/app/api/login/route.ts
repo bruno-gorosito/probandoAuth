@@ -12,8 +12,9 @@ interface RequestBody {
 
 export async function POST(req: NextRequest) {
     // console.log(await req.json())
-    return NextResponse.json({msg: 'LLegué al post'})
-    // const body: RequestBody = await req.json();
+    const body: RequestBody = await req.json();
+    
+    return NextResponse.json({msg: body})
     // cookies().set('body', body.email);
     // const user = await prisma.user.findUnique({
     //     where: {
