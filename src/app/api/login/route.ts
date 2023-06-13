@@ -11,6 +11,7 @@ interface RequestBody {
 
 
 export async function POST(req: NextRequest) {
+    console.log(req);
     const body: RequestBody = await req.json();
     console.log(body)
     const user = await prisma.user.findUnique({

@@ -24,6 +24,7 @@ const handler = NextAuth({
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
+        console.log(process.env.NEXTAUTH_URL)
         const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
           method: 'POST',
           body: JSON.stringify({
