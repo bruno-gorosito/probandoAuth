@@ -14,6 +14,7 @@ const ColumnaMensajes = () => {
                         </div>
                         
                         <h2>Receiver&apos;s name</h2>
+                        
                     </div>
                 </div>
                 <div className="h-px w-full bg-cyan-400 bottom-0"></div>
