@@ -10,7 +10,7 @@ const ColumnaChats = () => {
     const router = useRouter();
     const cerrarSesion = () => {
         signOut()
-        router.push('/login')
+        router.push('/auth/login')
     }
     
     return(
