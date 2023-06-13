@@ -130,7 +130,7 @@ const Page = () => {
                 className="w-full md:w-3/4 lg:w-1/2 mx-auto mt-10"
             />
             <form 
-                className="w-full flex flex-col justify-center items-center px-4 sm:px-10  lg:w-1/2 lg:py:0 relative"
+                className="w-full flex flex-col justify-center items-center px-4 sm:px-10 py:6 lg:w-1/2 lg:py:0 relative"
                 onSubmit={e => submitRegister(e)}
             >
                 {error.error 
@@ -219,7 +219,7 @@ const Page = () => {
                     className="mt-6 bg-gradient-bg w-full py-3 rounded-md hover:bg-gradient-bg hover:opacity-50 text-white"
                 >Registrarme</button>
                 <Link
-                    className="mt-4 pb-1 whitespace-nowrap relative after:content-[''] after:w-full after:h-1 after:absolute after:bg-gradient-bg after:bottom-0 after:left-0 after:transition after:origin-left hover:after:scale-x-100 after:scale-x-0 transition-all"
+                    className="mt-4 pb-10 ld:pb-0 whitespace-nowrap relative after:content-[''] after:w-full after:h-1 after:absolute after:bg-gradient-bg after:bottom-0 after:left-0 after:transition after:origin-left hover:after:scale-x-100 after:scale-x-0 transition-all"
                     href="auth/login"
                 >Ya tengo una cuenta</Link>
             </form>
