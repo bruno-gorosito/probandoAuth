@@ -7,7 +7,7 @@ export const Header = () => {
             {/* Header mobile */}
             <header className="block lg:hidden"> 
                 <nav className="w-full justify-between ">
-                    <h1 className="text-4xl text-center w-full md:w-1/2 lg:w-1/3">Websap</h1>
+                    <h1 className="text-4xl text-center w-full md:w-1/2 lg:w-1/3">Websapp</h1>
                     <div 
                         className="w-full md:w-1/2"
                     >
