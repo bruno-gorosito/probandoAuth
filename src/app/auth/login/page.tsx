@@ -30,26 +30,27 @@ export default function Page() {
     const handleSubmit = async(e:FormEvent) => {
         e.preventDefault();
         
-            const result = await signIn('credentials', {
-                email: user.email, 
-                password: user.password,
-                redirect: false
-            })
-            if (result?.error !== null) {
-                setError({
-                    error: true,
-                    msg: "Email o contraseña incorrectos."
-                })
-                setTimeout(() => {
-                    setError({
-                        error: false,
-                        msg: ""
-                    })
-                }, 2000)
-                return 
-            } 
-            console.log('me voy de aki')
+        const result = await signIn('credentials', {
+            email: user.email, 
+            password: user.password,
+            redirect: false
+        })
+        if (result?.error === null) {
             router.push('/chat');
+            return
+        }else  {
+            setError({
+                error: true,
+                msg: "Email o contraseña incorrectos."
+            })
+            setTimeout(() => {
+                setError({
+                    error: false,
+                    msg: ""
+                })
+            }, 2000)
+            return 
+        } 
     }   
 
     
