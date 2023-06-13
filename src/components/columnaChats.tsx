@@ -3,13 +3,17 @@ import { signOut, useSession } from "next-auth/react";
 import { CldUploadButton } from "next-cloudinary";
 import { CldUploadWidget } from 'next-cloudinary';
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ColumnaChats = () => {
     const {data: session} = useSession();
+    const cerrarSesion = () => {
+        signOut()
+        useRouter().push('/login')
+    }
     
     return(
         <>
-            <div className="w-full lg:w-4/12 p-4  relative h-screen after:h-full after:w-px after:bg-cyan-600  after:content-[''] after:absolute after:top-0 after:right-0">
                 <div className="flex justify-between items-center relative mb-4">
                     <div className="flex items-center">
                         <div className="w-10 aspect-square rounded-full bg-red-200 mr-3">
@@ -21,19 +25,12 @@ const ColumnaChats = () => {
                         <h2 className="capitalize">{session?.user.name} <span>{session?.user.lastName}</span></h2>
                     </div>
                     <button
-                        onClick={() => signOut()}
+                        onClick={cerrarSesion}
                         className="dark:hover:bg-black hover:bg-gray-300 px-4 py-2 duration-300 transition rounded"
                     >Cerrar sesión</button>
                 </div>
-                <div className="h-px w-full bg-cyan-400 bottom-0"></div>
-                <div
-                    className="absolute bottom-7 right-2"
-                >
-                    <div
-                        className="bg-gradient-bg w-16 aspect-square rounded-full text-white flex justify-center text-4xl font-medium place-items-center"
-                    >+</div>
-                </div>
-            </div>
+                <div className="h-px w-full  bg-cyan-400 bottom-0"></div>
+                
         </>
     )
 }
