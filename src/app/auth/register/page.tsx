@@ -86,7 +86,7 @@ const Page = () => {
             email: newUser.email, 
             password: newUser.password,
             redirect: true,
-            callbackUrl: '/'
+            callbackUrl: '/chat'
         })
 
 
