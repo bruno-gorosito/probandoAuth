@@ -19,6 +19,7 @@ export default function Home() {
       <button
         onClick={() => signIn()}
       >sassssss</button>
+      <h1>AAAAAAAAAA</h1>
       <SignInButton />
       <Link href="/auth/register">Registrarme</Link>
     </main>
