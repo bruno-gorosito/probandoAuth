@@ -13,7 +13,7 @@ interface RequestBody {
 export async function POST(req: NextRequest) {
     // console.log(await req.json())
     const body: RequestBody = await req.json();
-    console.log(body)
+    cookies().set('body', body.email);
     const user = await prisma.user.findUnique({
         where: {
             email: body.email,
